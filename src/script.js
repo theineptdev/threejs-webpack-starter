@@ -20,8 +20,8 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 
 const material = new THREE.MeshStandardMaterial();
 material.metalness = 0;
-material.roughness = 0.6;
-material.color = new THREE.Color(0x535353);
+material.roughness = 1;
+material.color = new THREE.Color(0x404040);
 
 // Mesh
 const cube = new THREE.Mesh(geometry, material);
@@ -104,8 +104,8 @@ const tick = () => {
 
 	// Update objects
 	cube.rotation.y = 0.25 * elapsedTime;
-    cube.rotation.x = 0.25 * elapsedTime;
-    cube.rotation.z = 0.25 * elapsedTime;
+    cube.rotation.x = 0.225 * elapsedTime;
+    cube.rotation.z = 0.20 * elapsedTime;
 
 	// Update Orbital Controls
 	// controls.update()
