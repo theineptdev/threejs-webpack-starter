@@ -3,6 +3,11 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import * as dat from 'dat.gui';
 
+// Loading
+const textureLoader = new THREE.TextureLoader();
+
+const normalTexture = textureLoader.load('/textures/NormalMap.png');
+
 // Debug
 const gui = new dat.GUI();
 
@@ -21,6 +26,7 @@ const sphereGeometry = new THREE.SphereBufferGeometry(.5, 64, 64);
 const material = new THREE.MeshStandardMaterial(); //"allows you to convey the real world as much as possible"
 material.metalness = 0.7;
 material.roughness = 0.2;
+material.normalMap = normalTexture;
 
 material.color = new THREE.Color(0x292929);
 
@@ -35,14 +41,6 @@ pointLight.position.x = 1;
 pointLight.position.y = 1;
 pointLight.position.z = 1;
 scene.add(pointLight);
-
-// Lights2
-
-const pointLight2 = new THREE.PointLight(0xffffff, 1);
-pointLight2.position.x = -1;
-pointLight2.position.y = -1;
-pointLight2.position.z = 1;
-scene.add(pointLight2);
 
 /**
  * Sizes
