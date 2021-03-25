@@ -11,21 +11,22 @@ const canvas = document.querySelector('canvas.webgl');
 
 // Scene
 const scene = new THREE.Scene();
-scene.background = new THREE.Color( 0xffffff );
+// scene.background = new THREE.Color( 0xffffff ); //background can be changed here or made alpha: true in the renderer for website default
 
 // Objects
-const geometry = new THREE.BoxGeometry(1, 1, 1);
+const sphereGeometry = new THREE.SphereBufferGeometry(.5, 64, 64);
 
 // Materials
 
-const material = new THREE.MeshStandardMaterial();
-material.metalness = 0;
-material.roughness = 1;
-material.color = new THREE.Color(0x404040);
+const material = new THREE.MeshStandardMaterial(); //"allows you to convey the real world as much as possible"
+material.metalness = 0.7;
+material.roughness = 0.2;
+
+material.color = new THREE.Color(0x292929);
 
 // Mesh
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const sphere = new THREE.Mesh(sphereGeometry, material);
+scene.add(sphere);
 
 // Lights
 
@@ -89,6 +90,7 @@ scene.add(camera);
  */
 const renderer = new THREE.WebGLRenderer({
 	canvas: canvas,
+	alpha: true,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -103,9 +105,9 @@ const tick = () => {
 	const elapsedTime = clock.getElapsedTime();
 
 	// Update objects
-	cube.rotation.y = 0.25 * elapsedTime;
-    cube.rotation.x = 0.225 * elapsedTime;
-    cube.rotation.z = 0.20 * elapsedTime;
+	sphere.rotation.y = 0.25 * elapsedTime;
+    sphere.rotation.x = 0.225 * elapsedTime;
+    sphere.rotation.z = 0.20 * elapsedTime;
 
 	// Update Orbital Controls
 	// controls.update()
