@@ -119,7 +119,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.x = 0;
 camera.position.y = 0;
-camera.position.z = 3;
+camera.position.z = 2;
 scene.add(camera);
 
 // Controls
@@ -156,6 +156,14 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 	 mouseY = (event.clientY -windowHalfY);
  }
 
+ const updateSphere = (event) => {
+	 sphere.position.y = window.scrollY * .001;
+ }
+
+ window.addEventListener('scroll', updateSphere);
+
+
+
 const clock = new THREE.Clock();
 
 const tick = () => {
@@ -170,7 +178,7 @@ const tick = () => {
 
 	sphere.rotation.y += .5 * (targetX - sphere.rotation.y)
 	sphere.rotation.x += .05 * (targetY - sphere.rotation.x)
-	sphere.rotation.z += -.05 * (targetY - sphere.rotation.x)
+	sphere.position.z += -.05 * (targetY - sphere.rotation.x)
 
 	// Update Orbital Controls
 	// controls.update()
